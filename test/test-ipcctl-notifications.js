@@ -129,7 +129,6 @@ test('scaleDown', function(t) {
 function hitCount(profile) {
   // FIXME(sam) profile data is not showing up! Probably we need to do some
   // work so that there is something to profile!
-  return 2;
   function visit(node) {
     var sum = 0;
     sum += node.hitCount | 0;
