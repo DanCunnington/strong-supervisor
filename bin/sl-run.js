@@ -16,8 +16,6 @@ process.on('disconnect', function() {
 
 var config = require('../lib/config'); // May exit, depending on argv
 var log = config.logger;
-var agent = require('../lib/agent');
-agent().start();
 var tracer = require('../lib/tracer');
 
 if (config.enableTracing && config.isWorker) {
@@ -25,10 +23,12 @@ if (config.enableTracing && config.isWorker) {
     log.error('supervisor failed to enable tracing');
 }
 
+var agent = require('../lib/agent');
 var agentOptions = {
   quiet: config.isWorker, // Quiet in worker, to avoid repeated log messages
-  logger: config.logger, // XXX(sam) does appmetrics do any console writes?
-  strongTracer: tracer(), // XXX(sam) unsupported by appmetrics?
+  logger: config.logger,
+  // XXX(sam) if appmetrics does any console writes, use the logger
+  strongTracer: tracer(),
   interval: 0 | process.env.STRONGLOOP_BASE_INTERVAL || 15000,
   // XXX(sam) interval is ignored by appmetrics
 };
