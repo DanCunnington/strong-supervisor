@@ -34,8 +34,7 @@ var agentOptions = {
 };
 
 if (config.profile) {
-  agent().configure(agentOptions);
-  agent().start();
+  agent().start(agentOptions);
 } else {
   if (config.isMaster) {
     log.error('supervisor running without profiling');
