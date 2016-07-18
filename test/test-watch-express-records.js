@@ -12,7 +12,8 @@ var w = require('./watcher');
 var Worker = w.Worker;
 var watcher = w.watcher;
 
-tap.test('express-records', function(t) {
+var SKIP = {skip: 'FIXME appmetrics'};
+tap.test('express-records', SKIP, function(t) {
   w.select('express-records');
 
   t.test('in worker', function(tt) {
