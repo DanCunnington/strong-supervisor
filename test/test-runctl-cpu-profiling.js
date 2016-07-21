@@ -18,7 +18,7 @@ var APP = require.resolve('./module-app');
 
 var run = supervise(APP);
 
-tap.test('runctl cpu profiling', {skip: 'FIX ME APPMETRICS'}, function(t) {
+tap.test('runctl cpu profiling', function(t) {
   // supervisor should exit with 0 after we stop it
   run.on('exit', function(code, signal) {
     t.equal(code, 0);
