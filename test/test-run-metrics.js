@@ -23,8 +23,7 @@ var util = require('util');
 var skipIfNoLicense = process.env.STRONGLOOP_LICENSE
                     ? false
                     : {skip: 'tested feature requires license'};
-var SKIP = {skip: 'FIXME loop metric minimums being reported as null'};
-tap.test('metrics', SKIP || skipIfNoLicense, function(t) {
+tap.test('metrics', skipIfNoLicense, function(t) {
   var appPath = require.resolve('./module-app');
   var plan = 15; // for internal
   var runArgs = [
